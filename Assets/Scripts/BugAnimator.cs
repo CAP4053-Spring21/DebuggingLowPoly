@@ -5,21 +5,38 @@ using UnityEngine.AI;
 
 public class BugAnimator : MonoBehaviour
 {
-    const float animationSmoothTime = 0.1f;
     NavMeshAgent agent;
     Animator animator;
+    PlayerMotor motor;
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        motor = GetComponent<PlayerMotor>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float speedPercent = agent.velocity.magnitude / agent.speed;
-        animator.SetBool("Walk Forward", speedPercent > 0);
-        //animator.SetFloat("speedPercent", speedPercent, animationSmoothTime, Time.deltaTime); ;
+        bool isMoving = agent.velocity.magnitude > 0;
+        if (isMoving)
+        {
+            if (motor.isRunning)
+            {
+                animator.SetBool("Run Forward", true);
+                animator.SetBool("Walk Forward", false);
+            }
+            else
+            {
+                animator.SetBool("Walk Forward", true);
+                animator.SetBool("Run Forward", false);
+            }
+        }
+        else
+        {
+            animator.SetBool("Run Forward", false);
+            animator.SetBool("Walk Forward", false);
+        }
     }
 }

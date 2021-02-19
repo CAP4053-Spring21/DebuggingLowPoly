@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
 
     public Interactable focus;
-
     public LayerMask movementMask;
 
     Camera cam;
@@ -51,6 +50,14 @@ public class PlayerController : MonoBehaviour
                     SetFocus(interactable);
                 }
             }
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            motor.Run();
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            motor.Walk();
         }
     }
 

@@ -9,11 +9,14 @@ public class PlayerMotor : MonoBehaviour
 {
     Transform target; // target to follow
     NavMeshAgent agent; // reference to our agent
+    public bool isRunning;
+    float runMultiplyer = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        isRunning = false;
     }
 
     void Update()
@@ -52,5 +55,17 @@ public class PlayerMotor : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
 
+    }
+
+    public void Run()
+    {
+        agent.speed *= runMultiplyer;
+        isRunning = true;
+    }
+
+    public void Walk()
+    {
+        agent.speed /= runMultiplyer;
+        isRunning = false;
     }
 }
