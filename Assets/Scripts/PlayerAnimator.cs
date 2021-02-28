@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BugAnimator : MonoBehaviour
+public class PlayerAnimator : MonoBehaviour
 {
     NavMeshAgent agent;
     Animator animator;
