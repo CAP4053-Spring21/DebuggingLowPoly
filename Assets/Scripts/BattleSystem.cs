@@ -21,6 +21,10 @@ public class BattleSystem : MonoBehaviour
 
     //public GameObject playerPrefab;
     GameObject enemyGO;
+    GameObject playerGO;
+
+    public Transform playerAttackSpot;
+    public Transform enemeyAttackSpot;
 
     public Transform playerBattleStation;
     public Transform enemyBattleStation;
@@ -41,6 +45,7 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
 
+
     Vector3 playerPreBattlePosition;
     Quaternion playerPreBattleRotation;
 
@@ -48,12 +53,13 @@ public class BattleSystem : MonoBehaviour
     public void StartBattle(GameObject enemy)
     {
         state = BattleState.START;
-
-        playerPreBattlePosition = PlayerManager.instance.player.transform.position;
-        playerPreBattleRotation = PlayerManager.instance.player.transform.rotation;
+        playerGO = PlayerManager.instance.player;
+        playerPreBattlePosition = playerGO.transform.position;
+        playerPreBattleRotation = playerGO.transform.rotation;
 
         StartCoroutine(SetupBattle(enemy));
     }
+
 
     IEnumerator SetupBattle(GameObject enemy)
     {
@@ -63,10 +69,10 @@ public class BattleSystem : MonoBehaviour
         mainCanvas.enabled = false;
         battleCanvas.enabled = true;
 
-        PlayerManager.instance.player.GetComponent<NavMeshAgent>().Warp(playerBattleStation.position);
-        PlayerManager.instance.player.transform.rotation = playerBattleStation.rotation;
-        playerUnit = PlayerManager.instance.player.GetComponent<Unit>();
-        PlayerManager.instance.player.GetComponent<PlayerController>().enabled = false;
+        playerGO.GetComponent<NavMeshAgent>().Warp(playerBattleStation.position);
+        playerGO.transform.rotation = playerBattleStation.rotation;
+        playerUnit = playerGO.GetComponent<Unit>();
+        playerGO.GetComponent<PlayerController>().enabled = false;
 
         enemyGO = enemy;
         enemy.GetComponent<NavMeshAgent>().Warp(enemyBattleStation.position);
@@ -84,15 +90,38 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
+    void FaceTarget()
+    {
+        Vector3 direction = (playerGO.transform.position - enemyBattleStation.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+        playerGO.transform.rotation = Quaternion.Slerp(playerGO.transform.rotation, lookRotation, Time.deltaTime * 5f);
+
+    }
 
     IEnumerator PlayerAttack()
     {
+        playerGO.GetComponent<NavMeshAgent>().SetDestination(playerAttackSpot.position);
+        yield return new WaitForSeconds(3f);
+
+        Animator playerAnimator = playerGO.GetComponent<Animator>();
+        playerAnimator.SetTrigger("Stab Attack");
+
+        //yield return new WaitForSeconds(2f);
+
         bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
 
         enemyHUD.SetHP(enemyUnit.currentHP);
         dialogueText.text = "The attack is successful!";
 
         yield return new WaitForSeconds(2f);
+
+
+        playerGO.GetComponent<NavMeshAgent>().SetDestination(playerBattleStation.position);
+
+        yield return new WaitForSeconds(3f);
+
+        playerGO.transform.rotation = playerBattleStation.rotation;
+
 
         if (isDead)
         {
@@ -108,6 +137,17 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
+        enemyGO.GetComponent<NavMeshAgent>().SetDestination(enemeyAttackSpot.position);
+        yield return new WaitForSeconds(2.8f);
+
+        Animator enemyAnimator = enemyGO.GetComponent<Animator>();
+        enemyAnimator.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(2f);
+
+        Animator playerAnimator = playerGO.GetComponent<Animator>();
+        playerAnimator.SetTrigger("Take Damage");
+
         dialogueText.text = enemyUnit.unitName + " attacks!";
 
         yield return new WaitForSeconds(1f);
@@ -117,6 +157,12 @@ public class BattleSystem : MonoBehaviour
         playerHUD.SetHP(playerUnit.currentHP);
 
         yield return new WaitForSeconds(1f);
+
+        enemyGO.GetComponent<NavMeshAgent>().SetDestination(enemyBattleStation.position);
+
+        yield return new WaitForSeconds(3f);
+
+        enemyGO.transform.rotation = enemyBattleStation.rotation;
 
         if (isDead)
         {
@@ -146,9 +192,9 @@ public class BattleSystem : MonoBehaviour
             mainCanvas.enabled = true;
             battleCanvas.enabled = false;
 
-            PlayerManager.instance.player.GetComponent<PlayerController>().enabled = true;
-            PlayerManager.instance.player.GetComponent<NavMeshAgent>().Warp(playerPreBattlePosition);
-            PlayerManager.instance.player.transform.rotation = playerPreBattleRotation;
+            playerGO.GetComponent<PlayerController>().enabled = true;
+            playerGO.GetComponent<NavMeshAgent>().Warp(playerPreBattlePosition);
+            playerGO.transform.rotation = playerPreBattleRotation;
 
         }
         else if (state == BattleState.LOST)
