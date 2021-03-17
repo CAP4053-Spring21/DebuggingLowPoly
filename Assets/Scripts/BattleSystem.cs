@@ -41,10 +41,17 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
 
+    Vector3 playerPreBattlePosition;
+    Quaternion playerPreBattleRotation;
+
     // Start is called before the first frame update
     public void StartBattle(GameObject enemy)
     {
         state = BattleState.START;
+
+        playerPreBattlePosition = PlayerManager.instance.player.transform.position;
+        playerPreBattleRotation = PlayerManager.instance.player.transform.rotation;
+
         StartCoroutine(SetupBattle(enemy));
     }
 
@@ -90,7 +97,7 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             state = BattleState.WON;
-            EndBattle();
+            StartCoroutine(EndBattle());
         }
         else
         {
@@ -114,7 +121,7 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             state = BattleState.LOST;
-            EndBattle();
+            StartCoroutine(EndBattle());
         }
         else
         {
@@ -124,12 +131,24 @@ public class BattleSystem : MonoBehaviour
 
     }
 
-    void EndBattle()
+    IEnumerator EndBattle()
     {
         if (state == BattleState.WON)
         {
             Destroy(enemyGO);
             dialogueText.text = "You won the battle!";
+
+            yield return new WaitForSeconds(2f);
+
+            mainCam.enabled = true;
+            battleCam.enabled = false;
+
+            mainCanvas.enabled = true;
+            battleCanvas.enabled = false;
+
+            PlayerManager.instance.player.GetComponent<PlayerController>().enabled = true;
+            PlayerManager.instance.player.GetComponent<NavMeshAgent>().Warp(playerPreBattlePosition);
+            PlayerManager.instance.player.transform.rotation = playerPreBattleRotation;
 
         }
         else if (state == BattleState.LOST)
