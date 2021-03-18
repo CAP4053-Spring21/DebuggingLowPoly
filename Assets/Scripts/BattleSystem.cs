@@ -106,7 +106,10 @@ public class BattleSystem : MonoBehaviour
         Animator playerAnimator = playerGO.GetComponent<Animator>();
         playerAnimator.SetTrigger("Stab Attack");
 
-        //yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.3f);
+
+        Animator enemyAnimator = enemyGO.GetComponent<Animator>();
+        enemyAnimator.SetTrigger("Jump");
 
         bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
 
@@ -143,7 +146,7 @@ public class BattleSystem : MonoBehaviour
         Animator enemyAnimator = enemyGO.GetComponent<Animator>();
         enemyAnimator.SetTrigger("Attack");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.7f);
 
         Animator playerAnimator = playerGO.GetComponent<Animator>();
         playerAnimator.SetTrigger("Take Damage");
@@ -181,10 +184,14 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.WON)
         {
-            Destroy(enemyGO);
+            Animator enemyAnimator = enemyGO.GetComponent<Animator>();
+            enemyAnimator.SetTrigger("Die");
+
             dialogueText.text = "You won the battle!";
 
             yield return new WaitForSeconds(2f);
+
+            Destroy(enemyGO);
 
             mainCam.enabled = true;
             battleCam.enabled = false;
@@ -199,6 +206,8 @@ public class BattleSystem : MonoBehaviour
         }
         else if (state == BattleState.LOST)
         {
+            Animator playerAnimator = playerGO.GetComponent<Animator>();
+            playerAnimator.SetTrigger("Die");
             dialogueText.text = "You were defeated.";
         }
     }
@@ -215,6 +224,8 @@ public class BattleSystem : MonoBehaviour
         playerHUD.SetHP(playerUnit.currentHP);
         dialogueText.text = "You feel renewed strength!";
 
+        Animator playerAnimator = playerGO.GetComponent<Animator>();
+        playerAnimator.SetTrigger("Cast Spell");
         yield return new WaitForSeconds(2f);
 
         state = BattleState.ENEMYTURN;
