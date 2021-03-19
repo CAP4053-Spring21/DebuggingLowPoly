@@ -9,6 +9,7 @@ public class Unit : MonoBehaviour
     public int unitLevel;
 
     public int damage;
+    public int damage2;
 
     public int maxHP;
     public int currentHP;
