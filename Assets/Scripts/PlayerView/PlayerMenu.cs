@@ -21,7 +21,6 @@ public class PlayerMenu : MonoBehaviour
         {
             if (ispaused)
             {
-                Debug.Log("Hello");
                 playerMenu.SetActive(false);
                 player.SetActive(true);
                 minimap.SetActive(true);
@@ -29,7 +28,6 @@ public class PlayerMenu : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hello"); 
                 player.SetActive(false);
                 minimap.SetActive(false);
                 playerMenu.SetActive(true);
