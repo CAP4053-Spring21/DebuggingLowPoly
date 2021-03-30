@@ -98,20 +98,20 @@ public class BattleSystem : MonoBehaviour
 
     }
 
-    IEnumerator PlayerAttack()
+    IEnumerator PlayerAttack(int damage, string animationName)
     {
         playerGO.GetComponent<NavMeshAgent>().SetDestination(playerAttackSpot.position);
         yield return new WaitForSeconds(3f);
 
         Animator playerAnimator = playerGO.GetComponent<Animator>();
-        playerAnimator.SetTrigger("Stab Attack");
+        playerAnimator.SetTrigger(animationName);
 
         yield return new WaitForSeconds(0.3f);
 
         Animator enemyAnimator = enemyGO.GetComponent<Animator>();
         enemyAnimator.SetTrigger("Jump");
 
-        bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+        bool isDead = enemyUnit.TakeDamage(damage);
 
         enemyHUD.SetHP(enemyUnit.currentHP);
         dialogueText.text = "The attack is successful!";
@@ -237,7 +237,15 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PLAYERTURN)
             return;
 
-        StartCoroutine(PlayerAttack());
+        StartCoroutine(PlayerAttack(playerUnit.damage, "Stab Attack"));
+    }
+
+    public void OnSmashAttackButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+
+        StartCoroutine(PlayerAttack(playerUnit.damage2, "Smash Attack"));
     }
 
     public void OnHealButton()
