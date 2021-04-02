@@ -51,6 +51,7 @@ public class BattleSystem : MonoBehaviour
     int enemyStunCount;
     int enemyPoisonCount;
     bool stunnedBefore;
+    bool isDefending;
 
     // Start is called before the first frame update
     public void StartBattle(GameObject enemy)
@@ -69,6 +70,7 @@ public class BattleSystem : MonoBehaviour
         enemyStunCount = 0;
         enemyPoisonCount = 0;
         stunnedBefore = false;
+        isDefending = false;
 
         mainCam.enabled = false;
         battleCam.enabled = true;
@@ -152,14 +154,21 @@ public class BattleSystem : MonoBehaviour
             stunnedBefore = true;
             Animator enemyAnimator = enemyGO.GetComponent<Animator>();
             enemyAnimator.SetTrigger("Attack");
+            dialogueText.text = enemyUnit.unitName + " shoots web.";
             yield return new WaitForSeconds(0.7f);
 
-            Animator playerAnimator = playerGO.GetComponent<Animator>();
-            playerAnimator.SetTrigger("Take Damage");
-            dialogueText.text = enemyUnit.unitName + " shoots web.";
-            yield return new WaitForSeconds(1.5f);
+            if (isDefending)
+            {
+                int damage = (int)(enemyUnit.damage2 * 0.5);
+                isDead = playerUnit.TakeDamage(damage);
+            }
+            else
+            {
+                Animator playerAnimator = playerGO.GetComponent<Animator>();
+                playerAnimator.SetTrigger("Take Damage");
+                isDead = playerUnit.TakeDamage(enemyUnit.damage2);
+            }
 
-            isDead = playerUnit.TakeDamage(enemyUnit.damage2);
             playerHUD.SetHP(playerUnit.currentHP);
             enemyStunCount = 1; // can also make this a random number
             yield return new WaitForSeconds(1f);
@@ -174,20 +183,29 @@ public class BattleSystem : MonoBehaviour
 
             Animator enemyAnimator = enemyGO.GetComponent<Animator>();
             enemyAnimator.SetTrigger("Attack");
+            dialogueText.text = enemyUnit.unitName + " poisons you!";
             yield return new WaitForSeconds(0.7f);
 
-            Animator playerAnimator = playerGO.GetComponent<Animator>();
-            playerAnimator.SetTrigger("Take Damage");
-            dialogueText.text = enemyUnit.unitName + " poisons you!";
-            yield return new WaitForSeconds(1.5f);
 
-            isDead = playerUnit.TakeDamage(enemyUnit.damage2);
+            if (isDefending)
+            {
+                int damage = (int)(enemyUnit.damage2 * 0.5);
+                isDead = playerUnit.TakeDamage(damage);
+            }
+            else
+            {
+                Animator playerAnimator = playerGO.GetComponent<Animator>();
+                playerAnimator.SetTrigger("Take Damage");
+                isDead = playerUnit.TakeDamage(enemyUnit.damage2);
+            }
+
             playerHUD.SetHP(playerUnit.currentHP);
             yield return new WaitForSeconds(1f);
         }
         else
         {
             stunnedBefore = false;
+            dialogueText.text = enemyUnit.unitName + " attacks!";
             enemyGO.GetComponent<NavMeshAgent>().SetDestination(enemeyAttackSpot.position);
             yield return new WaitForSeconds(2.8f);
 
@@ -195,12 +213,19 @@ public class BattleSystem : MonoBehaviour
             enemyAnimator.SetTrigger("Attack");
             yield return new WaitForSeconds(0.7f);
 
-            Animator playerAnimator = playerGO.GetComponent<Animator>();
-            playerAnimator.SetTrigger("Take Damage");
-            dialogueText.text = enemyUnit.unitName + " attacks!";
-            yield return new WaitForSeconds(1.5f);
 
-            isDead = playerUnit.TakeDamage(enemyUnit.damage);
+            if (isDefending)
+            {
+                int damage = (int)(enemyUnit.damage * 0.5);
+                isDead = playerUnit.TakeDamage(damage);
+            }
+            else
+            {
+                Animator playerAnimator = playerGO.GetComponent<Animator>();
+                playerAnimator.SetTrigger("Take Damage");
+                isDead = playerUnit.TakeDamage(enemyUnit.damage);
+            }
+
             playerHUD.SetHP(playerUnit.currentHP);
             yield return new WaitForSeconds(1f);
 
@@ -208,6 +233,13 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(3f);
 
             enemyGO.transform.rotation = enemyBattleStation.rotation;
+        }
+
+        if (isDefending)
+        {
+            isDefending = false;
+            Animator playerAnimator = playerGO.GetComponent<Animator>();
+            playerAnimator.SetBool("Defend", isDefending);
         }
 
         if (enemyPoisonCount > 0)
@@ -227,6 +259,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
+
         if (isDead)
         {
             state = BattleState.LOST;
@@ -236,7 +269,7 @@ public class BattleSystem : MonoBehaviour
         {
             enemyStunCount -= 1;
             dialogueText.text = "Stuck in web. Turn skipped.";
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
             StartCoroutine(EnemyTurn());
         }
         else
@@ -295,6 +328,25 @@ public class BattleSystem : MonoBehaviour
         playerAnimator.SetTrigger("Cast Spell");
         yield return new WaitForSeconds(2f);
 
+        if (enemyPoisonCount > 0)
+        {
+            enemyPoisonCount = 0;
+            dialogueText.text = "Poison was removed!";
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(EnemyTurn());
+    }
+
+    IEnumerator PlayerDefend()
+    {
+        dialogueText.text = "You've gone defensive!";
+        isDefending = true;
+        Animator playerAnimator = playerGO.GetComponent<Animator>();
+        playerAnimator.SetBool("Defend", isDefending);
+        yield return new WaitForSeconds(2f);
+
         state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());
     }
@@ -306,6 +358,15 @@ public class BattleSystem : MonoBehaviour
 
         StartCoroutine(PlayerAttack(playerUnit.damage, "Stab Attack"));
     }
+
+    public void OnDefendButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+
+        StartCoroutine(PlayerDefend());
+    }
+
 
     public void OnSmashAttackButton()
     {
