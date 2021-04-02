@@ -109,6 +109,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerAttack(int damage, string animationName)
     {
+        state = BattleState.ENEMYTURN;
         playerGO.GetComponent<NavMeshAgent>().SetDestination(playerAttackSpot.position);
         yield return new WaitForSeconds(3f);
 
@@ -138,7 +139,6 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
         }
     }
@@ -149,7 +149,7 @@ public class BattleSystem : MonoBehaviour
         bool isDead;
 
         Debug.Log(enemyMoveProb);
-        if (enemyMoveProb < 0.15f && !stunnedBefore)
+        if (enemyMoveProb < 0.15f && !stunnedBefore && enemyUnit.unitLevel > 2)
         {
             stunnedBefore = true;
             Animator enemyAnimator = enemyGO.GetComponent<Animator>();
@@ -173,7 +173,7 @@ public class BattleSystem : MonoBehaviour
             enemyStunCount = 1; // can also make this a random number
             yield return new WaitForSeconds(1f);
         }
-        else if (enemyMoveProb < 0.45f)
+        else if (enemyMoveProb < 0.45f && enemyUnit.unitLevel > 1)
         {
             stunnedBefore = false;
             if (enemyPoisonCount == 0)
@@ -319,6 +319,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerHeal()
     {
+        state = BattleState.ENEMYTURN;
         playerUnit.Heal(15);
 
         playerHUD.SetHP(playerUnit.currentHP);
@@ -335,19 +336,18 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
 
-        state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());
     }
 
     IEnumerator PlayerDefend()
     {
+        state = BattleState.ENEMYTURN;
         dialogueText.text = "You've gone defensive!";
         isDefending = true;
         Animator playerAnimator = playerGO.GetComponent<Animator>();
         playerAnimator.SetBool("Defend", isDefending);
         yield return new WaitForSeconds(2f);
 
-        state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());
     }
 
