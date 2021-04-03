@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour
 {
 
     public float lookRadius = 10f;
+    public AudioClip overworld;
+    public AudioClip battleScene;
     Transform target;
     NavMeshAgent agent;
     CharacterCombat combat;
@@ -31,6 +33,7 @@ public class EnemyController : MonoBehaviour
             if (distance <= agent.stoppingDistance)
             {
                 BattleSystem.instance.StartBattle(gameObject);
+
                 lookRadius = 0;
                 //CharacterStats targetStats = target.GetComponent<CharacterStats>();
 
