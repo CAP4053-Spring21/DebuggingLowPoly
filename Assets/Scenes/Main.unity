@@ -1146,7 +1146,7 @@ MonoBehaviour:
   enemyBattleStation: {fileID: 1655283276}
   mainCam: {fileID: 1246536067}
   battleCam: {fileID: 102661082}
-  mainCanvas: {fileID: 0}
+  mainCanvas: {fileID: 2062385418}
   battleCanvas: {fileID: 577239484}
   dialogueText: {fileID: 1194650975}
   playerHUD: {fileID: 1940232814}
