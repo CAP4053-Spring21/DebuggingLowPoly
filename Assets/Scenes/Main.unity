@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44664735, g: 0.49649262, b: 0.5748604, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 195041155}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -384,7 +384,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 2062385420}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMenu, Assembly-CSharp
         m_MethodName: DeactivateMenu
         m_Mode: 1
@@ -1146,7 +1146,7 @@ MonoBehaviour:
   enemyBattleStation: {fileID: 1655283276}
   mainCam: {fileID: 1246536067}
   battleCam: {fileID: 102661082}
-  mainCanvas: {fileID: 2062385418}
+  mainCanvas: {fileID: 0}
   battleCanvas: {fileID: 577239484}
   dialogueText: {fileID: 1194650975}
   playerHUD: {fileID: 1940232814}
