@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     {
         int scene_index = SceneManager.GetActiveScene().buildIndex;
 
+        Time.timeScale = 1;
         SceneManager.LoadScene(scene_index + 1);
     }
 
