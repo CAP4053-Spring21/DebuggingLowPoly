@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Hud : MonoBehaviour
@@ -10,6 +11,18 @@ public class Hud : MonoBehaviour
     public GameObject minimap;
     public GameObject healthBar;
     public bool gamePaused;
+    public Slider slider;
+
+    public void SetMaxHealth(int health)
+    {
+        slider.maxValue = health;
+        slider.value = health;
+    }
+
+    public void SetHealth(int health)
+    {
+        slider.value = health;
+    }
 
     public void resumeGame() 
     {
@@ -29,6 +42,11 @@ public class Hud : MonoBehaviour
         healthBar.SetActive(!gamePaused);
         pauseMenu.SetActive(gamePaused);
         Time.timeScale = (gamePaused) ? 0 : 1;
+    }
+
+    void Start()
+    {
+        Debug.Log(slider);
     }
 
     // Update is called once per frame
