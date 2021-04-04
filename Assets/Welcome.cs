@@ -24,7 +24,6 @@ public class Welcome : MonoBehaviour
     }
 
     
-
     void Update()
     {
         if (current == size - 1)
