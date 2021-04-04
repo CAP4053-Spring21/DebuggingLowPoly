@@ -2346,6 +2346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 320024137}
   - component: {fileID: 320024138}
+  - component: {fileID: 320024139}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2421,10 +2422,24 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &320024139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320024136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8881f41cf58d20a4b911bc617274377a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 320024138}
+  unit: {fileID: 1783564442721373}
 --- !u!1001 &323103171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13605,7 +13620,6 @@ MonoBehaviour:
   minimap: {fileID: 182203767}
   healthBar: {fileID: 320024136}
   gamePaused: 0
-  slider: {fileID: 320024138}
 --- !u!1001 &2095919723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13928,6 +13942,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9110150930322802141, guid: f188e85da9a574ec29b1dc2f9224d4f7, type: 3}
   m_PrefabInstance: {fileID: 9109537556061428102}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1783564442721373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9109537556965807078, guid: f188e85da9a574ec29b1dc2f9224d4f7, type: 3}
+  m_PrefabInstance: {fileID: 9109537556061428102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783564442721371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dbd3d23f91f4f0787037d9a3f52b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4215788044604049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9107806871687252759, guid: f188e85da9a574ec29b1dc2f9224d4f7, type: 3}
@@ -14057,6 +14082,10 @@ PrefabInstance:
       propertyPath: damage2
       value: 55
       objectReference: {fileID: 0}
+    - target: {fileID: 9109537556965807078, guid: f188e85da9a574ec29b1dc2f9224d4f7, type: 3}
+      propertyPath: overworldHealthBar
+      value: 
+      objectReference: {fileID: 320024139}
     - target: {fileID: 9110150930322802141, guid: f188e85da9a574ec29b1dc2f9224d4f7, type: 3}
       propertyPath: m_Name
       value: Player
