@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: b36c7d01c280148fa91a38ec492e5f53
+guid: 2c882483c2669474fb9026f81c34963c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - overworld: {instanceID: 0}
-  - battleScene: {fileID: 8300000, guid: b5eeef0b353a9334bab458724e62e1ed, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
