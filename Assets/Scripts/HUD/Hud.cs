@@ -16,6 +16,12 @@ public class Hud : MonoBehaviour
     public bool gamePaused;
     public bool optionsOn;
 
+    public void restartGame()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+    }
+
     public void resumeGame() 
     {
         gamePaused = !gamePaused;
