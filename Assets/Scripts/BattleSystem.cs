@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -44,6 +45,9 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD enemyHUD;
 
     public BattleState state;
+
+    public AudioClip attackAudio;
+    public AudioSource audioSource;
 
 
     Vector3 playerPreBattlePosition;
@@ -355,6 +359,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state != BattleState.PLAYERTURN)
             return;
+
 
         StartCoroutine(PlayerAttack(playerUnit.damage, "Stab Attack"));
     }
