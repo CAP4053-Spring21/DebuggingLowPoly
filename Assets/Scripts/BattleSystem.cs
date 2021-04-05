@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -313,6 +314,9 @@ public class BattleSystem : MonoBehaviour
             Animator playerAnimator = playerGO.GetComponent<Animator>();
             playerAnimator.SetTrigger("Die");
             dialogueText.text = "You were defeated.";
+
+            yield return new WaitForSeconds(2.0f);
+            SceneManager.LoadScene(0);
         }
     }
 

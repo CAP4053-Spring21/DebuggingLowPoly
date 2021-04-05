@@ -26,11 +26,24 @@ public class Welcome : MonoBehaviour
     
     void Update()
     {
-        if (current == size - 1)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            nextButton.SetActive(false);
-            doneButton.SetActive(true);
+            if (current < size - 1)
+            {
+                next(); 
+            }
+            else
+            {
+                welcome.SetActive(false);
+            }
         }
+
+
+        // if (current == size - 1)
+        // {
+        //     nextButton.SetActive(false);
+        //     doneButton.SetActive(true);
+        // }
     }
 
 }
