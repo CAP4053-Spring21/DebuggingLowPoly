@@ -11,7 +11,10 @@ public class Hud : MonoBehaviour
     public GameObject minimap;
     public GameObject healthBar;
     public GameObject welcome;
+    public GameObject front;
+    public GameObject optionsPage;
     public bool gamePaused;
+    public bool optionsOn;
 
     public void resumeGame() 
     {
@@ -31,7 +34,20 @@ public class Hud : MonoBehaviour
         healthBar.SetActive(!gamePaused);
         welcome.SetActive(!gamePaused);
         pauseMenu.SetActive(gamePaused);
+        front.SetActive(gamePaused);
+
+        if (optionsOn)
+        {
+            optionsPage.SetActive(gamePaused);
+            optionsOn = !optionsOn;
+        }
+
         Time.timeScale = (gamePaused) ? 0 : 1;
+    }
+
+    public void inOptions() 
+    {
+        optionsOn = !optionsOn;
     }
 
     // Update is called once per frame
@@ -42,6 +58,7 @@ public class Hud : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F2) || Input.GetKeyDown(KeyCode.F3))
             {
+
                 gamePaused = !gamePaused;
 
                 togglePause(gamePaused);
