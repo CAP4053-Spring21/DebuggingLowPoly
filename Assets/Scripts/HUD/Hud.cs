@@ -10,6 +10,7 @@ public class Hud : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject minimap;
     public GameObject healthBar;
+    public GameObject welcome;
     public bool gamePaused;
 
     public void resumeGame() 
@@ -28,6 +29,7 @@ public class Hud : MonoBehaviour
     {
         minimap.SetActive(!gamePaused);
         healthBar.SetActive(!gamePaused);
+        welcome.SetActive(!gamePaused);
         pauseMenu.SetActive(gamePaused);
         Time.timeScale = (gamePaused) ? 0 : 1;
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44664735, g: 0.49649262, b: 0.5748604, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15317,6 +15317,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 796244208}
   minimap: {fileID: 182203767}
   healthBar: {fileID: 320024136}
+  welcome: {fileID: 613137100}
   gamePaused: 0
 --- !u!1001 &2095919723
 PrefabInstance:
