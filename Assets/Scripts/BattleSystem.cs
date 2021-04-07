@@ -40,6 +40,10 @@ public class BattleSystem : MonoBehaviour
     Unit playerUnit;
     Unit enemyUnit;
 
+    // temporary feature
+    // TODO- This is just a rip off of our expected game
+    public int killCount = 0;
+
     public Text dialogueText;
 
     public BattleHUD playerHUD;
@@ -307,6 +311,7 @@ public class BattleSystem : MonoBehaviour
             playerGO.GetComponent<PlayerController>().enabled = true;
             playerGO.GetComponent<NavMeshAgent>().Warp(playerPreBattlePosition);
             playerGO.transform.rotation = playerPreBattleRotation;
+            killCount++;
 
         }
         else if (state == BattleState.LOST)
@@ -316,6 +321,12 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You were defeated.";
 
             yield return new WaitForSeconds(2.0f);
+            SceneManager.LoadScene(0);
+        }
+
+        // temporary if statement for the video assignment
+        if(killCount > 1)
+        {
             SceneManager.LoadScene(0);
         }
     }
