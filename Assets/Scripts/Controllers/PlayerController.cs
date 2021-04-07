@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        float horInput = Input.GetAxis("Horizontal");
+        float verInput = Input.GetAxis("Vertical");
+        Vector3 movement = new Vector3(horInput, 0f, verInput);
+        Vector3 moveDestination = transform.position - movement;
+        motor.MoveToPoint(moveDestination);
+        //GetComponent<NavMeshAgent>().destination = moveDestination;
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
