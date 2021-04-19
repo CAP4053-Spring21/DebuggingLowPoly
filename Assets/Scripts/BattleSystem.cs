@@ -37,6 +37,8 @@ public class BattleSystem : MonoBehaviour
     public Canvas mainCanvas;
     public Canvas battleCanvas;
 
+    public ParticleSystem enemyEmitter;
+
     Unit playerUnit;
     Unit enemyUnit;
 
@@ -45,6 +47,7 @@ public class BattleSystem : MonoBehaviour
     public int killCount = 0;
 
     public Text dialogueText;
+    public Text specialStatus;
 
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
@@ -53,6 +56,9 @@ public class BattleSystem : MonoBehaviour
 
     public AudioClip attackAudio;
     public AudioSource audioSource;
+
+    public GameObject smashAttackObj;
+    public GameObject healObj;
 
 
     Vector3 playerPreBattlePosition;
@@ -81,16 +87,38 @@ public class BattleSystem : MonoBehaviour
         stunnedBefore = false;
         isDefending = false;
 
+        specialStatus.text = "";
+
         mainCam.enabled = false;
         battleCam.enabled = true;
 
-        mainCanvas.enabled = false;
-        battleCanvas.enabled = true;
 
         playerGO.GetComponent<NavMeshAgent>().Warp(playerBattleStation.position);
         playerGO.transform.rotation = playerBattleStation.rotation;
         playerUnit = playerGO.GetComponent<Unit>();
         playerGO.GetComponent<PlayerController>().enabled = false;
+
+        if (playerUnit.unitLevel < 3)
+        {
+            smashAttackObj.SetActive(false);
+        }
+        else
+        {
+            smashAttackObj.SetActive(true);
+        }
+
+        if (playerUnit.unitLevel < 2)
+        {
+            healObj.SetActive(false);
+        }
+        else
+        {
+            healObj.SetActive(true);
+        }
+
+        mainCanvas.enabled = false;
+        battleCanvas.enabled = true;
+
 
         enemyGO = enemy;
         enemy.GetComponent<NavMeshAgent>().Warp(enemyBattleStation.position);
@@ -163,6 +191,10 @@ public class BattleSystem : MonoBehaviour
             stunnedBefore = true;
             Animator enemyAnimator = enemyGO.GetComponent<Animator>();
             enemyAnimator.SetTrigger("Attack");
+
+            enemyEmitter.startColor = new Color(1f, 1f, 1f);
+            enemyEmitter.Play();
+
             dialogueText.text = enemyUnit.unitName + " shoots web.";
             yield return new WaitForSeconds(0.7f);
 
@@ -193,6 +225,10 @@ public class BattleSystem : MonoBehaviour
             Animator enemyAnimator = enemyGO.GetComponent<Animator>();
             enemyAnimator.SetTrigger("Attack");
             dialogueText.text = enemyUnit.unitName + " poisons you!";
+
+            enemyEmitter.startColor = new Color(0.62f, .27f, 1f);
+            enemyEmitter.Play();
+
             yield return new WaitForSeconds(0.7f);
 
 
@@ -255,6 +291,8 @@ public class BattleSystem : MonoBehaviour
         {
             Animator playerAnimator = playerGO.GetComponent<Animator>();
             playerAnimator.SetTrigger("Take Damage");
+            specialStatus.color = new Color(0.62f, .27f, 1f);
+            specialStatus.text = "PSN";
             dialogueText.text = playerUnit.unitName + " hurt by poison!";
             yield return new WaitForSeconds(1.5f);
             isDead = playerUnit.TakeDamage(enemyUnit.damage2);
@@ -264,6 +302,7 @@ public class BattleSystem : MonoBehaviour
             if (enemyPoisonCount == 0)
             {
                 dialogueText.text = "Poison has faded away.";
+                specialStatus.text = "";
                 yield return new WaitForSeconds(1.5f);
             }
         }
@@ -300,6 +339,43 @@ public class BattleSystem : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
 
+            int earnedXP = (enemyUnit.unitLevel * 25) + Random.Range(1, 50);
+            playerUnit.currentXP += earnedXP;
+            dialogueText.text = "You earned " + earnedXP + " XP";
+            yield return new WaitForSeconds(1.5f);
+
+            if (playerUnit.currentXP < playerUnit.maxXP)
+            {
+                playerHUD.SetXP(playerUnit.currentXP);
+            }
+            else
+            {
+                playerHUD.SetXP(playerUnit.maxXP);
+                dialogueText.text = "You leveled up!";
+                playerUnit.currentHP = playerUnit.maxHP;
+                playerHUD.SetHP(playerUnit.currentHP);
+                yield return new WaitForSeconds(2f);
+
+                playerUnit.currentXP = playerUnit.currentXP % playerUnit.maxXP;
+                playerUnit.unitLevel++;
+                if (playerUnit.unitLevel == 2)
+                {
+                    dialogueText.text = "You learned to heal!";
+                    yield return new WaitForSeconds(2f);
+                }
+
+                if (playerUnit.unitLevel == 3)
+                {
+                    dialogueText.text = "You learned smash attack!";
+                    yield return new WaitForSeconds(2f);
+                }
+                playerUnit.maxXP = playerUnit.unitLevel * 50;
+                playerHUD.SetHUD(playerUnit);
+
+            }
+
+            yield return new WaitForSeconds(2f);
+
             Destroy(enemyGO);
 
             mainCam.enabled = true;
@@ -325,10 +401,10 @@ public class BattleSystem : MonoBehaviour
         }
 
         // temporary if statement for the video assignment
-        if(killCount > 1)
-        {
-            SceneManager.LoadScene(0);
-        }
+        //if (killCount > 1)
+        //{
+        //    SceneManager.LoadScene(0);
+        //}
     }
 
     void PlayerTurn()
@@ -352,6 +428,7 @@ public class BattleSystem : MonoBehaviour
         {
             enemyPoisonCount = 0;
             dialogueText.text = "Poison was removed!";
+            specialStatus.text = "";
             yield return new WaitForSeconds(1.5f);
         }
 
