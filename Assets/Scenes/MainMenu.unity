@@ -6724,6 +6724,7 @@ MonoBehaviour:
   nameText: {fileID: 1481579698}
   levelText: {fileID: 203783756}
   hpSlider: {fileID: 194699502}
+  xpSlider: {fileID: 0}
 --- !u!114 &1644121309
 MonoBehaviour:
   m_ObjectHideFlags: 0
