@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class Hud : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject minimap;
     public GameObject healthBar;
     public GameObject welcome;
     public GameObject front;
@@ -36,7 +35,6 @@ public class Hud : MonoBehaviour
 
     public void togglePause(bool gamePaused)
     {
-        minimap.SetActive(!gamePaused);
         healthBar.SetActive(!gamePaused);
         welcome.SetActive(!gamePaused);
         pauseMenu.SetActive(gamePaused);

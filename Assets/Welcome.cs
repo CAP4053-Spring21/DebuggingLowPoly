@@ -23,27 +23,12 @@ public class Welcome : MonoBehaviour
         message.SetActive(true);
     }
 
-    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (current == size - 1)
         {
-            if (current < size - 1)
-            {
-                next(); 
-            }
-            else
-            {
-                welcome.SetActive(false);
-            }
+            nextButton.SetActive(false);
+            doneButton.SetActive(true);
         }
-
-
-        // if (current == size - 1)
-        // {
-        //     nextButton.SetActive(false);
-        //     doneButton.SetActive(true);
-        // }
     }
-
 }
