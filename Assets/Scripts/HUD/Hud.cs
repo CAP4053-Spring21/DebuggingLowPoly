@@ -60,7 +60,7 @@ public class Hud : MonoBehaviour
         int scene_index = SceneManager.GetActiveScene().buildIndex;
         if (scene_index == 1)
         {
-            if (Input.GetKeyDown(KeyCode.F2) || Input.GetKeyDown(KeyCode.F3))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
 
                 gamePaused = !gamePaused;
