@@ -12,8 +12,18 @@ public class Hud : MonoBehaviour
     public GameObject welcome;
     public GameObject front;
     public GameObject optionsPage;
+    public GameObject Inventory;
     public bool gamePaused;
     public bool optionsOn;
+    private bool inventorySet = false;
+
+    public void setInventory()
+    {
+        inventorySet = !inventorySet;
+
+        Inventory.SetActive(inventorySet);
+        Time.timeScale = (inventorySet) ? 0 : 1;
+    }
 
     public void restartGame()
     {
@@ -63,9 +73,16 @@ public class Hud : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
 
-                gamePaused = !gamePaused;
+                if (inventorySet)
+                {
+                    setInventory();
+                }
+                else
+                {
+                    gamePaused = !gamePaused;
+                    togglePause(gamePaused);
+                }
 
-                togglePause(gamePaused);
             }
         }
     }
