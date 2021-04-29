@@ -38,6 +38,7 @@ public class Hud : MonoBehaviour
     {
         healthBar.SetActive(!gamePaused);
         welcome.SetActive(!gamePaused);
+        Inventory.SetActive(!gamePaused);
         pauseMenu.SetActive(gamePaused);
         front.SetActive(gamePaused);
 
