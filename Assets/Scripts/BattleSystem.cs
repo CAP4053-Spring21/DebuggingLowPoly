@@ -60,6 +60,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject smashAttackObj;
     public GameObject healObj;
 
+    public AudioSource winSound;
 
     Vector3 playerPreBattlePosition;
     Quaternion playerPreBattleRotation;
@@ -332,6 +333,8 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.WON)
         {
+
+            winSound.Play();
             Animator enemyAnimator = enemyGO.GetComponent<Animator>();
             enemyAnimator.SetTrigger("Die");
 
