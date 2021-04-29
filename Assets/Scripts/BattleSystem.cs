@@ -61,6 +61,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject healObj;
 
     public AudioSource winSound;
+    public AudioSource loseSound;
 
     Vector3 playerPreBattlePosition;
     Quaternion playerPreBattleRotation;
@@ -395,6 +396,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (state == BattleState.LOST)
         {
+            loseSound.Play();
             Animator playerAnimator = playerGO.GetComponent<Animator>();
             playerAnimator.SetTrigger("Die");
             dialogueText.text = "You were defeated.";
