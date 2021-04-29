@@ -10,6 +10,7 @@ public class CollectableScript : MonoBehaviour
     public AudioSource collectSound;
     public Unit unit;
     public GameObject prompt;
+    public GameObject healthMessage;
 
     void OnTriggerEnter(Collider other)
     {
@@ -25,6 +26,7 @@ public class CollectableScript : MonoBehaviour
         else
         {
             prompt.SetActive(true);
+            healthMessage.SetActive(true);
         }
         
     }
