@@ -356,8 +356,11 @@ public class BattleSystem : MonoBehaviour
             {
                 playerHUD.SetXP(playerUnit.maxXP);
                 dialogueText.text = "You leveled up!";
-                playerUnit.currentHP = playerUnit.maxHP;
-                playerHUD.SetHP(playerUnit.currentHP);
+
+                // Commented Temporarily
+                // playerUnit.currentHP = playerUnit.maxHP;
+                // playerHUD.SetHP(playerUnit.currentHP);
+
                 yield return new WaitForSeconds(2f);
 
                 playerUnit.currentXP = playerUnit.currentXP % playerUnit.maxXP;
