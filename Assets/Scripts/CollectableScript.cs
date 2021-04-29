@@ -15,18 +15,7 @@ public class CollectableScript : MonoBehaviour
     {
         collectSound.Play();
 
-
-        if (unit.currentHP <  unit.maxHP)
-        {
-            int hpDiff = unit.maxHP - unit.currentHP;
-            unit.currentHP += (hpDiff >= 15) ? 15 : hpDiff;
-            Destroy(gameObject);
-        }
-        else
-        {
-            prompt.SetActive(true);
-        }
-        
+        Destroy(gameObject); 
     }
 
 }

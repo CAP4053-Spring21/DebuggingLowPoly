@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class EnemyController : MonoBehaviour
 {
 
-    public float lookRadius = 10f;
+    public float lookRadius = 100f;
     public AudioClip overworld;
     public AudioClip battleScene;
     Transform target;
@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(target.position, transform.position);
+
 
         if (distance <= lookRadius)
         {
