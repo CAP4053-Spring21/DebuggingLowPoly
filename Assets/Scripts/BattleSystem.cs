@@ -358,8 +358,8 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "You leveled up!";
 
                 // Commented Temporarily
-                // playerUnit.currentHP = playerUnit.maxHP;
-                // playerHUD.SetHP(playerUnit.currentHP);
+                playerUnit.currentHP = (playerUnit.currentHP * 2 < playerUnit.maxHP) ? playerUnit.currentHP * 2 : playerUnit.maxHP;
+                playerHUD.SetHP(playerUnit.currentHP);
 
                 yield return new WaitForSeconds(2f);
 
