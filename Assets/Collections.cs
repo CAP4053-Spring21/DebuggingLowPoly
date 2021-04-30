@@ -8,9 +8,9 @@ public class Collections : MonoBehaviour
     public Text rockCountText;
     public Text fireCountText;
     public Text poisonCountText;
-    private int numRocks = 0;
-    private int numFire = 0;
-    private int numPoison = 0;
+    public int numRocks = 0;
+    public int numFire = 0;
+    public int numPoison = 0;
 
     public void incrementRockCount()
     {

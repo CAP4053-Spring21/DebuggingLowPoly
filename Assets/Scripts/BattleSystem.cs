@@ -60,6 +60,12 @@ public class BattleSystem : MonoBehaviour
     public GameObject smashAttackObj;
     public GameObject healObj;
 
+    // Collection Buttons
+    public Collections collections;
+    public Text stoneText;
+    public Text fireText;
+    public Text poisonText;
+
     public AudioSource winSound;
     public AudioSource loseSound;
 
@@ -118,6 +124,16 @@ public class BattleSystem : MonoBehaviour
             healObj.SetActive(true);
         }
 
+        // Setting up Inventory
+        string newcount = "x" + collections.numRocks.ToString();
+        stoneText.text = newcount;
+
+        newcount = "x" + collections.numFire.ToString();
+        fireText.text = newcount;
+
+        newcount = "x" + collections.numPoison.ToString();
+        poisonText.text = newcount;
+
         mainCanvas.enabled = false;
         battleCanvas.enabled = true;
 
@@ -138,6 +154,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
+    
     void FaceTarget()
     {
         Vector3 direction = (playerGO.transform.position - enemyBattleStation.position).normalized;
