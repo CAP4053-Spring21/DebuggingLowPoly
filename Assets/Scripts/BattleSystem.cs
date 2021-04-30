@@ -515,9 +515,18 @@ public class BattleSystem : MonoBehaviour
 
         // Make move 
         // Change count
-        collections.numRocks--;
-        string newcount = "x" + collections.numRocks.ToString();
-        stoneText.text = newcount;
+        if (collections.numRocks > 0)
+        {
+            collections.numRocks--;
+            string newcount = "x" + collections.numRocks.ToString();
+            stoneText.text = newcount;
+            dialogueText.text = "You threw a rock!";
+        }
+        else
+        {
+            dialogueText.text = "You ran out of rocks. Make another move.";
+
+        }
     }
 
     public void useFireButton()
@@ -529,9 +538,18 @@ public class BattleSystem : MonoBehaviour
 
         // Make move 
         // Change count
-        collections.numFire--;
-        string newcount = "x" + collections.numFire.ToString();
-        fireText.text = newcount;
+        if (collections.numFire > 0)
+        {
+            collections.numFire--;
+            string newcount = "x" + collections.numFire.ToString();
+            fireText.text = newcount;
+            dialogueText.text = "You torched the enemy!";
+        }
+        else
+        {
+            dialogueText.text = "You ran out of fire. Make another move.";
+
+        }
     }
 
     public void usePoisonButton()
@@ -543,8 +561,17 @@ public class BattleSystem : MonoBehaviour
 
         // Make move 
         // Change count
-        collections.numPoison--;
-        string newcount = "x" + collections.numPoison.ToString();
-        poisonText.text = newcount;
+        if (collections.numPoison > 0)
+        {
+            collections.numPoison--;
+            string newcount = "x" + collections.numPoison.ToString();
+            poisonText.text = newcount;
+            dialogueText.text = "You poisoned the enemy!";
+        }
+        else
+        {
+            dialogueText.text = "You ran out of poison. Make another move.";
+
+        }
     }
 }
