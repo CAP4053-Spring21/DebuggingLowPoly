@@ -521,6 +521,7 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numRocks.ToString();
             stoneText.text = newcount;
             dialogueText.text = "You threw a rock!";
+            // StartCoroutine();
         }
         else
         {
@@ -544,6 +545,7 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numFire.ToString();
             fireText.text = newcount;
             dialogueText.text = "You torched the enemy!";
+            // StartCoroutine();
         }
         else
         {
@@ -567,6 +569,7 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numPoison.ToString();
             poisonText.text = newcount;
             dialogueText.text = "You poisoned the enemy!";
+            // StartCoroutine();
         }
         else
         {
