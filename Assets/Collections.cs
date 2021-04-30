@@ -39,4 +39,16 @@ public class Collections : MonoBehaviour
         fireCountText.text += numFire.ToString();
         poisonCountText.text += numPoison.ToString();
     }
+
+    void Update()
+    {
+        string newcount = "x" + numRocks.ToString();
+        rockCountText.text = newcount;
+
+        newcount = "x" + numFire.ToString();
+        fireCountText.text = newcount;
+
+        newcount = "x" + numPoison.ToString();
+        poisonCountText.text = newcount;
+    }
 }
