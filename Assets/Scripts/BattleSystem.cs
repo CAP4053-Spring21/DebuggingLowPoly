@@ -43,7 +43,7 @@ public class BattleSystem : MonoBehaviour
     Unit enemyUnit;
 
     // temporary feature
-    // TODO- This is just a rip off of our expected game
+    // TODO: This is just a rip off of our expected game
     public int killCount = 0;
 
     public Text dialogueText;
@@ -59,6 +59,12 @@ public class BattleSystem : MonoBehaviour
 
     public GameObject smashAttackObj;
     public GameObject healObj;
+
+    // Collection Buttons
+    public Collections collections;
+    public Text stoneText;
+    public Text fireText;
+    public Text poisonText;
 
     public AudioSource winSound;
     public AudioSource loseSound;
@@ -118,6 +124,16 @@ public class BattleSystem : MonoBehaviour
             healObj.SetActive(true);
         }
 
+        // Setting up Inventory
+        string newcount = "x" + collections.numRocks.ToString();
+        stoneText.text = newcount;
+
+        newcount = "x" + collections.numFire.ToString();
+        fireText.text = newcount;
+
+        newcount = "x" + collections.numPoison.ToString();
+        poisonText.text = newcount;
+
         mainCanvas.enabled = false;
         battleCanvas.enabled = true;
 
@@ -138,6 +154,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
+
     void FaceTarget()
     {
         Vector3 direction = (playerGO.transform.position - enemyBattleStation.position).normalized;
@@ -358,8 +375,8 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "You leveled up!";
 
                 // Commented Temporarily
-                // playerUnit.currentHP = playerUnit.maxHP;
-                // playerHUD.SetHP(playerUnit.currentHP);
+                playerUnit.currentHP = (playerUnit.currentHP * 2 < playerUnit.maxHP) ? playerUnit.currentHP * 2 : playerUnit.maxHP;
+                playerHUD.SetHP(playerUnit.currentHP);
 
                 yield return new WaitForSeconds(2f);
 
@@ -489,4 +506,45 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerHeal());
     }
 
+    public void useRockButton()
+    {
+        // Check if it is player's turn
+        if (state != BattleState.PLAYERTURN)
+            return;
+        
+
+        // Make move 
+        // Change count
+        collections.numRocks--;
+        string newcount = "x" + collections.numRocks.ToString();
+        stoneText.text = newcount;
+    }
+
+    public void useFireButton()
+    {
+        // Check if it is player's turn
+        if (state != BattleState.PLAYERTURN)
+            return;
+        
+
+        // Make move 
+        // Change count
+        collections.numFire--;
+        string newcount = "x" + collections.numFire.ToString();
+        fireText.text = newcount;
+    }
+
+    public void usePoisonButton()
+    {
+        // Check if it is player's turn
+        if (state != BattleState.PLAYERTURN)
+            return;
+        
+
+        // Make move 
+        // Change count
+        collections.numPoison--;
+        string newcount = "x" + collections.numPoison.ToString();
+        poisonText.text = newcount;
+    }
 }
