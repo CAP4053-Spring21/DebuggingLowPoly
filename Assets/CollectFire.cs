@@ -8,7 +8,7 @@ public class CollectFire : MonoBehaviour
     public Unit unit;
     public GameObject prompt;
     public GameObject fireMessage;
-    public Collectables collectables;
+    public Collectibles collectibles;
 
     public Collections collections;
 
@@ -19,9 +19,9 @@ public class CollectFire : MonoBehaviour
         
         collections.incrementFireCount();
 
-        if (!collectables.seenFireMessages)
+        if (!collectibles.seenFireMessages)
         {
-            collectables.seenFireMessages = true;
+            collectibles.seenFireMessages = true;
             prompt.SetActive(true);
             fireMessage.SetActive(true);
         }

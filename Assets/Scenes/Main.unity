@@ -7789,7 +7789,7 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   rockMessage: {fileID: 999677991}
-  collectables: {fileID: 798285794}
+  collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &306391642
 BoxCollider:
@@ -19945,7 +19945,7 @@ GameObject:
   - component: {fileID: 798285795}
   - component: {fileID: 798285794}
   m_Layer: 0
-  m_Name: Collectables
+  m_Name: Collectibles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23058,7 +23058,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have collected poison to infect you enemy!
+  m_text: You have collected poison to infect your enemy!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -32664,7 +32664,7 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   fireMessage: {fileID: 1262031175}
-  collectables: {fileID: 798285794}
+  collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &1364519625
 BoxCollider:
@@ -37262,7 +37262,7 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   poisonMessage: {fileID: 941692272}
-  collectables: {fileID: 798285794}
+  collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &1599644684
 BoxCollider:

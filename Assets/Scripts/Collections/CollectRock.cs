@@ -8,7 +8,7 @@ public class CollectRock : MonoBehaviour
     public Unit unit;
     public GameObject prompt;
     public GameObject rockMessage;
-    public Collectables collectables;
+    public Collectibles collectibles;
 
     public Collections collections;
 
@@ -19,9 +19,9 @@ public class CollectRock : MonoBehaviour
         
         collections.incrementRockCount();
 
-        if (!collectables.seenRockMessages)
+        if (!collectibles.seenRockMessages)
         {
-            collectables.seenRockMessages = true;
+            collectibles.seenRockMessages = true;
             prompt.SetActive(true);
             rockMessage.SetActive(true);
         }

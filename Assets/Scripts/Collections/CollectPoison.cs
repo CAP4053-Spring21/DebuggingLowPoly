@@ -8,7 +8,7 @@ public class CollectPoison : MonoBehaviour
     public Unit unit;
     public GameObject prompt;
     public GameObject poisonMessage;
-    public Collectables collectables;
+    public Collectibles collectibles;
 
     public Collections collections;
 
@@ -19,9 +19,9 @@ public class CollectPoison : MonoBehaviour
         
         collections.incrementPoisonCount();
 
-        if (!collectables.seenPoisonMessages)
+        if (!collectibles.seenPoisonMessages)
         {
-            collectables.seenPoisonMessages = true;
+            collectibles.seenPoisonMessages = true;
             prompt.SetActive(true);
             poisonMessage.SetActive(true);
         }
