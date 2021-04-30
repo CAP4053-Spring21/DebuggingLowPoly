@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectRock : MonoBehaviour
+public class CollectPoison : MonoBehaviour
 {
     public AudioSource collectSound;
     public Unit unit;
     public GameObject prompt;
-    public GameObject rockMessage;
+    public GameObject poisonMessage;
     public Collectables collectables;
 
     public Collections collections;
@@ -17,13 +17,13 @@ public class CollectRock : MonoBehaviour
         collectSound.Play();
         Destroy(gameObject);
         
-        collections.incrementRockCount();
+        collections.incrementPoisonCount();
 
-        if (!collectables.seenRockMessages)
+        if (!collectables.seenPoisonMessages)
         {
-            collectables.seenRockMessages = true;
+            collectables.seenPoisonMessages = true;
             prompt.SetActive(true);
-            rockMessage.SetActive(true);
+            poisonMessage.SetActive(true);
         }
 
     }
