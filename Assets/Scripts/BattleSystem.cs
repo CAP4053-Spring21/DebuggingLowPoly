@@ -43,7 +43,7 @@ public class BattleSystem : MonoBehaviour
     Unit enemyUnit;
 
     // temporary feature
-    // TODO- This is just a rip off of our expected game
+    // TODO: This is just a rip off of our expected game
     public int killCount = 0;
 
     public Text dialogueText;
@@ -154,7 +154,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
-    
+
     void FaceTarget()
     {
         Vector3 direction = (playerGO.transform.position - enemyBattleStation.position).normalized;
@@ -506,4 +506,45 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerHeal());
     }
 
+    public void useRockButton()
+    {
+        // Check if it is player's turn
+        if (state != BattleState.PLAYERTURN)
+            return;
+        
+
+        // Make move 
+        // Change count
+        collections.numRocks--;
+        string newcount = "x" + collections.numRocks.ToString();
+        stoneText.text = newcount;
+    }
+
+    public void useFireButton()
+    {
+        // Check if it is player's turn
+        if (state != BattleState.PLAYERTURN)
+            return;
+        
+
+        // Make move 
+        // Change count
+        collections.numFire--;
+        string newcount = "x" + collections.numFire.ToString();
+        fireText.text = newcount;
+    }
+
+    public void usePoisonButton()
+    {
+        // Check if it is player's turn
+        if (state != BattleState.PLAYERTURN)
+            return;
+        
+
+        // Make move 
+        // Change count
+        collections.numPoison--;
+        string newcount = "x" + collections.numPoison.ToString();
+        poisonText.text = newcount;
+    }
 }
