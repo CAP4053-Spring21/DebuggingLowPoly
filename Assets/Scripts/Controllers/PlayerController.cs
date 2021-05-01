@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     Camera cam;
     PlayerMotor motor;
 
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
         float horInput = Input.GetAxis("Horizontal");
         float verInput = Input.GetAxis("Vertical");
+
         Vector3 movement = new Vector3(horInput, 0f, verInput);
         Vector3 moveDestination = transform.position - movement;
         motor.MoveToPoint(moveDestination);
@@ -65,6 +69,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             motor.Walk();
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space should make jump");
+           //jump
         }
     }
 
