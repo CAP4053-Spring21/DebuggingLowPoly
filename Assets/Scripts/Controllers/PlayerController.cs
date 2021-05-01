@@ -13,13 +13,12 @@ public class PlayerController : MonoBehaviour
     PlayerMotor motor;
 
 
-
-
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
         motor = GetComponent<PlayerMotor>();
+
     }
 
     // Update is called once per frame
@@ -73,7 +72,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Space should make jump");
-           //jump
+            //jump
         }
     }
 
