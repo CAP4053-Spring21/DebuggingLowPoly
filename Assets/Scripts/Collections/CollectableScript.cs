@@ -11,6 +11,7 @@ public class CollectableScript : MonoBehaviour
     public Unit unit;
     public GameObject prompt;
     public GameObject healthMessage;
+    public List<GameObject> messages = new List<GameObject>();
 
     void OnTriggerEnter(Collider other)
     {
@@ -27,6 +28,12 @@ public class CollectableScript : MonoBehaviour
         {
             prompt.SetActive(true);
             healthMessage.SetActive(true);
+
+            for (int i = 0; i < messages.Count; i++)
+            {
+                Debug.Log(messages[i]);
+            }
+
         }
         
     }
