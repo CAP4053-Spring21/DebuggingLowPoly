@@ -14579,7 +14579,7 @@ MonoBehaviour:
   mainCam: {fileID: 1246536067}
   battleCam: {fileID: 102661082}
   mainCanvas: {fileID: 2062385418}
-  battleCanvas: {fileID: 577239481}
+  battleCanvas: {fileID: 577239484}
   enemyEmitter: {fileID: 1735111770}
   rockEmitter: {fileID: 12262495}
   poisonEmitter: {fileID: 122369135}
