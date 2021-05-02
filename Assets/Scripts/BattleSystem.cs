@@ -25,6 +25,8 @@ public class BattleSystem : MonoBehaviour
     GameObject enemyGO;
     GameObject playerGO;
 
+    public GameObject attackBtn;
+
     public Transform playerAttackSpot;
     public Transform enemeyAttackSpot;
 
@@ -103,7 +105,6 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SetupBattle(GameObject enemy)
     {
-
         enemyStunCount = 0;
         enemyPoisonCount = 0;
         stunnedBefore = false;
@@ -120,6 +121,7 @@ public class BattleSystem : MonoBehaviour
         playerUnit = playerGO.GetComponent<Unit>();
         playerGO.GetComponent<PlayerController>().enabled = false;
 
+        attackBtn.SetActive(true);
         if (playerUnit.unitLevel < 3)
         {
             smashAttackObj.SetActive(false);
@@ -429,6 +431,8 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
                 Destroy(enemyGO);
+
+                attackBtn.SetActive(false);
 
                 mainCam.enabled = true;
                 battleCam.enabled = false;

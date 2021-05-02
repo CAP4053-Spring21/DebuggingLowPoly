@@ -14572,6 +14572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf044ac75cc14351b0d9ccb7f626f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackBtn: {fileID: 1392319747}
   playerAttackSpot: {fileID: 1063403257}
   enemeyAttackSpot: {fileID: 374547879}
   playerBattleStation: {fileID: 1290002617}
@@ -70934,7 +70935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: da4eeef492c0d1842963d6576330682d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1529.04
+      value: -1528.67
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: da4eeef492c0d1842963d6576330682d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -70942,7 +70943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: da4eeef492c0d1842963d6576330682d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 292.75
+      value: 292.65
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: da4eeef492c0d1842963d6576330682d, type: 3}
       propertyPath: m_LocalRotation.w
