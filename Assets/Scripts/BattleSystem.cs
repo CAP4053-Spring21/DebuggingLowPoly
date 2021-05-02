@@ -37,7 +37,7 @@ public class BattleSystem : MonoBehaviour
     public Camera battleCam;
 
     public Canvas mainCanvas;
-    public Canvas battleCanvas;
+    public GameObject battleCanvas;
 
     public ParticleSystem enemyEmitter;
     public ParticleSystem rockEmitter;
@@ -151,7 +151,7 @@ public class BattleSystem : MonoBehaviour
         poisonText.text = newcount;
 
         mainCanvas.enabled = false;
-        battleCanvas.enabled = true;
+        battleCanvas.SetActive(true);
 
 
         enemyGO = enemy;
@@ -438,7 +438,7 @@ public class BattleSystem : MonoBehaviour
                 battleCam.enabled = false;
 
                 mainCanvas.enabled = true;
-                battleCanvas.enabled = false;
+                battleCanvas.SetActive(false);
 
                 playerGO.GetComponent<PlayerController>().enabled = true;
                 playerGO.GetComponent<NavMeshAgent>().Warp(playerPreBattlePosition);
