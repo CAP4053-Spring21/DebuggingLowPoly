@@ -9,6 +9,10 @@ public class CollectPoison : MonoBehaviour
     public GameObject prompt;
     public GameObject poisonMessage;
     public Collectibles collectibles;
+    public GameObject rockMessage;
+    public GameObject Welcome;
+    public GameObject fullHealth;
+    public GameObject collectFire;
 
     public Collections collections;
 
@@ -24,6 +28,11 @@ public class CollectPoison : MonoBehaviour
             collectibles.seenPoisonMessages = true;
             prompt.SetActive(true);
             poisonMessage.SetActive(true);
+
+            rockMessage.SetActive(false);
+            fullHealth.SetActive(false);
+            collectFire.SetActive(false);
+            Welcome.SetActive(false);
         }
 
     }

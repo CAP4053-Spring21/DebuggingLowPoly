@@ -11,7 +11,10 @@ public class CollectableScript : MonoBehaviour
     public Unit unit;
     public GameObject prompt;
     public GameObject healthMessage;
-    public List<GameObject> messages = new List<GameObject>();
+    public GameObject rockMessage;
+    public GameObject Welcome;
+    public GameObject collectPoison;
+    public GameObject fireMessage;
 
     void OnTriggerEnter(Collider other)
     {
@@ -29,10 +32,10 @@ public class CollectableScript : MonoBehaviour
             prompt.SetActive(true);
             healthMessage.SetActive(true);
 
-            for (int i = 0; i < messages.Count; i++)
-            {
-                Debug.Log(messages[i]);
-            }
+            rockMessage.SetActive(false);
+            Welcome.SetActive(false);
+            collectPoison.SetActive(false);
+            fireMessage.SetActive(false);
 
         }
         
