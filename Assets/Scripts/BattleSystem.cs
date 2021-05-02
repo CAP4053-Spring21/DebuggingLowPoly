@@ -555,7 +555,7 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numRocks.ToString();
             stoneText.text = newcount;
             dialogueText.text = "You threw a rock!";
-            rockEmitter.startColor = new Color(1f, 1f, 1f);
+            //rockEmitter.startColor = new Color(1f, 1f, 1f);
             rockEmitter.Play();
             StartCoroutine(PlayerAttack(playerUnit.rockDamage, "Rock"));
         }
@@ -580,7 +580,7 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numFire.ToString();
             fireText.text = newcount;
             dialogueText.text = "You torched the enemy!";
-            fireEmitter.startColor = new Color(1f, 1f, 1f);
+            //fireEmitter.startColor = new Color(1f, 1f, 1f);
             fireEmitter.Play();
             StartCoroutine(PlayerAttack(playerUnit.fireDamage, "Fire"));
         }
@@ -605,7 +605,7 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numPoison.ToString();
             poisonText.text = newcount;
             dialogueText.text = "You poisoned the enemy!";
-            poisonEmitter.startColor = new Color(1f, 1f, 1f);
+            //poisonEmitter.startColor = new Color(1f, 1f, 1f);
             poisonEmitter.Play();
             StartCoroutine(PlayerAttack(playerUnit.poisionDamage, "Poison"));
         }
