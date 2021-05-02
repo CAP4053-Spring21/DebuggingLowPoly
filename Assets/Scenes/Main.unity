@@ -6491,7 +6491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.11541, y: -15.4}
   m_SizeDelta: {x: 342, y: 55.076096}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &44807574
@@ -6514,8 +6514,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The mobsters of the place are two spider twins, Otto and Hunter. You must
-    be careful because they both shoot poisonous venom that can be devastating.
+  m_text: The mobsters are scattered across the map. Navigate your way through the
+    map to find and destroy Otto. Reach Otto by destroying anyone in your way or
+    by evading them.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15709,7 +15710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.11542, y: 66.4}
+  m_AnchoredPosition: {x: 0.1154, y: 37.5}
   m_SizeDelta: {x: 342, y: 28.466797}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &364690722
@@ -15732,7 +15733,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Find Hunter and Otto and defeat him to free the town!
+  m_text: Collect food to heal and rocks, fire, and poison to destroy your enemy.
+    Bugspeed and good luck!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -24092,8 +24094,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -16.51995}
-  m_SizeDelta: {x: 342, y: 33.0399}
+  m_AnchoredPosition: {x: 0, y: -5.4199}
+  m_SizeDelta: {x: 342, y: 43.8798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &670076252
 MonoBehaviour:
@@ -24116,7 +24118,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Welcome to Debugging! This is where you will fight against the Pest Mafia,
-    a mob that is corrupting the world!
+    a family of spiders that is corrupting the world!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -25977,7 +25979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.11542, y: 52.1}
+  m_AnchoredPosition: {x: -0.11542, y: 62}
   m_SizeDelta: {x: 342, y: 41.356796}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &726226269
@@ -26000,8 +26002,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: It is your job as the new sheriff to destroy the Pest Mafia and all of
-    its leaders.
+  m_text: It is your job as the new sheriff to destroy the Pest Mafia. However, there
+    are an overwhelming numbere of minions. The only way to defeat the entire mafia
+    is to defeat its leader, Otto.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -8,6 +8,10 @@ public class CollectRock : MonoBehaviour
     public Unit unit;
     public GameObject prompt;
     public GameObject rockMessage;
+    public GameObject Welcome;
+    public GameObject fullHealth;
+    public GameObject collectFire;
+    public GameObject collectPoison;
     public Collectibles collectibles;
 
     public Collections collections;
@@ -25,6 +29,10 @@ public class CollectRock : MonoBehaviour
             collectibles.seenRockMessages = true;
             prompt.SetActive(true);
             rockMessage.SetActive(true);
+            fullHealth.SetActive(false);
+            collectFire.SetActive(false);
+            collectPoison.SetActive(false);
+            Welcome.SetActive(false);
         }
 
     }
