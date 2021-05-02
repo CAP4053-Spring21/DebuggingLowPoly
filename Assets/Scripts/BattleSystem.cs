@@ -39,14 +39,17 @@ public class BattleSystem : MonoBehaviour
 
     public ParticleSystem enemyEmitter;
 
-    Unit playerUnit;
-    Unit enemyUnit;
+    public Unit playerUnit;
+    public Unit enemyUnit;
 
     public GameObject losePage;
+    public GameObject winPage;
     public GameObject enemyHUDComp;
     public GameObject playerHUDComp;
     public GameObject dialoguePanel;
     public GameObject battleInventory;
+
+    public bool finalBoss = false;
 
     // temporary feature
     // TODO: This is just a rip off of our expected game
@@ -96,6 +99,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SetupBattle(GameObject enemy)
     {
+
         enemyStunCount = 0;
         enemyPoisonCount = 0;
         stunnedBefore = false;
@@ -150,6 +154,10 @@ public class BattleSystem : MonoBehaviour
         enemy.transform.rotation = enemyBattleStation.rotation;
         enemyUnit = enemy.GetComponent<Unit>();
 
+        if (enemyUnit.unitName == "Otto")
+        {
+            finalBoss = !finalBoss;
+        }
         dialogueText.text = "A wild " + enemyUnit.unitName + " approaches...";
 
         playerHUD.SetHUD(playerUnit);
@@ -366,58 +374,69 @@ public class BattleSystem : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
 
-            int earnedXP = (enemyUnit.unitLevel * 25) + Random.Range(1, 50);
-            playerUnit.currentXP += earnedXP;
-            dialogueText.text = "You earned " + earnedXP + " XP";
-            yield return new WaitForSeconds(1.5f);
-
-            if (playerUnit.currentXP < playerUnit.maxXP)
+            if (finalBoss)
             {
-                playerHUD.SetXP(playerUnit.currentXP);
+                winPage.SetActive(true);
+                enemyHUDComp.SetActive(false);
+                playerHUDComp.SetActive(false);
+                dialoguePanel.SetActive(false);
+                battleInventory.SetActive(false);
             }
             else
             {
-                playerHUD.SetXP(playerUnit.maxXP);
-                dialogueText.text = "You leveled up!";
+                int earnedXP = (enemyUnit.unitLevel * 25) + Random.Range(1, 50);
+                playerUnit.currentXP += earnedXP;
+                dialogueText.text = "You earned " + earnedXP + " XP";
+                yield return new WaitForSeconds(1.5f);
 
-                // Commented Temporarily
-                playerUnit.currentHP = (playerUnit.currentHP * 2 < playerUnit.maxHP) ? playerUnit.currentHP * 2 : playerUnit.maxHP;
-                playerHUD.SetHP(playerUnit.currentHP);
+                if (playerUnit.currentXP < playerUnit.maxXP)
+                {
+                    playerHUD.SetXP(playerUnit.currentXP);
+                }
+                else
+                {
+                    playerHUD.SetXP(playerUnit.maxXP);
+                    dialogueText.text = "You leveled up!";
+
+                    // Commented Temporarily
+                    playerUnit.currentHP = (playerUnit.currentHP * 2 < playerUnit.maxHP) ? playerUnit.currentHP * 2 : playerUnit.maxHP;
+                    playerHUD.SetHP(playerUnit.currentHP);
+
+                    yield return new WaitForSeconds(2f);
+
+                    playerUnit.currentXP = playerUnit.currentXP % playerUnit.maxXP;
+                    playerUnit.unitLevel++;
+                    if (playerUnit.unitLevel == 2)
+                    {
+                        dialogueText.text = "You learned to heal!";
+                        yield return new WaitForSeconds(2f);
+                    }
+
+                    if (playerUnit.unitLevel == 3)
+                    {
+                        dialogueText.text = "You learned smash attack!";
+                        yield return new WaitForSeconds(2f);
+                    }
+                    playerUnit.maxXP = playerUnit.unitLevel * 50;
+                    playerHUD.SetHUD(playerUnit);
+
+                }
 
                 yield return new WaitForSeconds(2f);
 
-                playerUnit.currentXP = playerUnit.currentXP % playerUnit.maxXP;
-                playerUnit.unitLevel++;
-                if (playerUnit.unitLevel == 2)
-                {
-                    dialogueText.text = "You learned to heal!";
-                    yield return new WaitForSeconds(2f);
-                }
+                Destroy(enemyGO);
 
-                if (playerUnit.unitLevel == 3)
-                {
-                    dialogueText.text = "You learned smash attack!";
-                    yield return new WaitForSeconds(2f);
-                }
-                playerUnit.maxXP = playerUnit.unitLevel * 50;
-                playerHUD.SetHUD(playerUnit);
+                mainCam.enabled = true;
+                battleCam.enabled = false;
 
+                mainCanvas.enabled = true;
+                battleCanvas.enabled = false;
+
+                playerGO.GetComponent<PlayerController>().enabled = true;
+                playerGO.GetComponent<NavMeshAgent>().Warp(playerPreBattlePosition);
+                playerGO.transform.rotation = playerPreBattleRotation;
+                killCount++;
             }
-
-            yield return new WaitForSeconds(2f);
-
-            Destroy(enemyGO);
-
-            mainCam.enabled = true;
-            battleCam.enabled = false;
-
-            mainCanvas.enabled = true;
-            battleCanvas.enabled = false;
-
-            playerGO.GetComponent<PlayerController>().enabled = true;
-            playerGO.GetComponent<NavMeshAgent>().Warp(playerPreBattlePosition);
-            playerGO.transform.rotation = playerPreBattleRotation;
-            killCount++;
 
         }
         else if (state == BattleState.LOST)
