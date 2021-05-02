@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 20
+  overworld: {fileID: 0}
+  battleScene: {fileID: 0}
 --- !u!114 &5428191496548672306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,8 +182,11 @@ MonoBehaviour:
   unitName: Spider
   unitLevel: 1
   damage: 5
+  damage2: 0
   maxHP: 100
   currentHP: 100
+  maxXP: 0
+  currentXP: 0
 --- !u!1001 &5428191496509116949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -192,6 +197,10 @@ PrefabInstance:
     - target: {fileID: 100100, guid: f5a9bd478ca094495a4520e37f57420d, type: 3}
       propertyPath: m_Name
       value: spider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100100, guid: f5a9bd478ca094495a4520e37f57420d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400100, guid: f5a9bd478ca094495a4520e37f57420d, type: 3}
       propertyPath: m_RootOrder
