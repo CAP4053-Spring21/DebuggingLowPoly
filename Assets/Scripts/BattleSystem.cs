@@ -38,6 +38,10 @@ public class BattleSystem : MonoBehaviour
     public Canvas battleCanvas;
 
     public ParticleSystem enemyEmitter;
+    public ParticleSystem rockEmitter;
+    public ParticleSystem poisonEmitter;
+    public ParticleSystem fireEmitter;
+
 
     public Unit playerUnit;
     public Unit enemyUnit;
@@ -551,6 +555,8 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numRocks.ToString();
             stoneText.text = newcount;
             dialogueText.text = "You threw a rock!";
+            rockEmitter.startColor = new Color(1f, 1f, 1f);
+            rockEmitter.Play();
             StartCoroutine(PlayerAttack(playerUnit.rockDamage, "Rock"));
         }
         else
@@ -574,6 +580,8 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numFire.ToString();
             fireText.text = newcount;
             dialogueText.text = "You torched the enemy!";
+            fireEmitter.startColor = new Color(1f, 1f, 1f);
+            fireEmitter.Play();
             StartCoroutine(PlayerAttack(playerUnit.fireDamage, "Fire"));
         }
         else
@@ -597,6 +605,8 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numPoison.ToString();
             poisonText.text = newcount;
             dialogueText.text = "You poisoned the enemy!";
+            poisonEmitter.startColor = new Color(1f, 1f, 1f);
+            poisonEmitter.Play();
             StartCoroutine(PlayerAttack(playerUnit.poisionDamage, "Poison"));
         }
         else
