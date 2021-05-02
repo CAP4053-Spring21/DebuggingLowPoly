@@ -13,7 +13,7 @@ public class BattleSystem : MonoBehaviour
     #region Singleton
 
     public static BattleSystem instance;
-
+    
     void Awake()
     {
         instance = this;
@@ -25,8 +25,6 @@ public class BattleSystem : MonoBehaviour
     GameObject enemyGO;
     GameObject playerGO;
 
-    public GameObject melees;
-
     public Transform playerAttackSpot;
     public Transform enemeyAttackSpot;
 
@@ -37,7 +35,7 @@ public class BattleSystem : MonoBehaviour
     public Camera battleCam;
 
     public Canvas mainCanvas;
-    public GameObject battleCanvas;
+    public Canvas battleCanvas;
 
     public ParticleSystem enemyEmitter;
     public ParticleSystem rockEmitter;
@@ -105,6 +103,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SetupBattle(GameObject enemy)
     {
+
         enemyStunCount = 0;
         enemyPoisonCount = 0;
         stunnedBefore = false;
@@ -121,7 +120,6 @@ public class BattleSystem : MonoBehaviour
         playerUnit = playerGO.GetComponent<Unit>();
         playerGO.GetComponent<PlayerController>().enabled = false;
 
-        melees.SetActive(true);
         if (playerUnit.unitLevel < 3)
         {
             smashAttackObj.SetActive(false);
@@ -151,7 +149,7 @@ public class BattleSystem : MonoBehaviour
         poisonText.text = newcount;
 
         mainCanvas.enabled = false;
-        battleCanvas.SetActive(true);
+        battleCanvas.enabled = true;
 
 
         enemyGO = enemy;
@@ -432,13 +430,11 @@ public class BattleSystem : MonoBehaviour
 
                 Destroy(enemyGO);
 
-                melees.SetActive(false);
-
                 mainCam.enabled = true;
                 battleCam.enabled = false;
 
                 mainCanvas.enabled = true;
-                battleCanvas.SetActive(false);
+                battleCanvas.enabled = false;
 
                 playerGO.GetComponent<PlayerController>().enabled = true;
                 playerGO.GetComponent<NavMeshAgent>().Warp(playerPreBattlePosition);
