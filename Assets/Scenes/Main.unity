@@ -5572,10 +5572,10 @@ MonoBehaviour:
   prompt: {fileID: 1063623851}
   poisonMessage: {fileID: 941692272}
   collectibles: {fileID: 798285794}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
   collections: {fileID: 2079133750}
 --- !u!65 &19782211
 BoxCollider:
@@ -7230,10 +7230,10 @@ MonoBehaviour:
   prompt: {fileID: 1063623851}
   fireMessage: {fileID: 1262031175}
   collectibles: {fileID: 798285794}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectPoison: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectPoison: {fileID: 941692272}
   collections: {fileID: 2079133750}
 --- !u!65 &72151506
 BoxCollider:
@@ -14572,7 +14572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf044ac75cc14351b0d9ccb7f626f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackBtn: {fileID: 1392319747}
+  melees: {fileID: 1490579888}
   playerAttackSpot: {fileID: 1063403257}
   enemeyAttackSpot: {fileID: 374547879}
   playerBattleStation: {fileID: 1290002617}
@@ -14582,9 +14582,9 @@ MonoBehaviour:
   mainCanvas: {fileID: 2062385418}
   battleCanvas: {fileID: 577239484}
   enemyEmitter: {fileID: 1735111770}
-  rockEmitter: {fileID: 0}
-  poisonEmitter: {fileID: 0}
-  fireEmitter: {fileID: 0}
+  rockEmitter: {fileID: 12262495}
+  poisonEmitter: {fileID: 122369135}
+  fireEmitter: {fileID: 1300864418}
   playerUnit: {fileID: 0}
   enemyUnit: {fileID: 0}
   losePage: {fileID: 602809994}
@@ -17066,10 +17066,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   rockMessage: {fileID: 999677991}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
-  collectPoison: {fileID: 0}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
+  collectPoison: {fileID: 941692272}
   collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &242095608
@@ -20163,10 +20163,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   rockMessage: {fileID: 999677991}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
-  collectPoison: {fileID: 0}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
+  collectPoison: {fileID: 941692272}
   collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &342798673
@@ -21414,10 +21414,10 @@ MonoBehaviour:
   prompt: {fileID: 1063623851}
   poisonMessage: {fileID: 941692272}
   collectibles: {fileID: 798285794}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
   collections: {fileID: 2079133750}
 --- !u!65 &373791717
 BoxCollider:
@@ -22162,10 +22162,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   healthMessage: {fileID: 490813547}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  collectPoison: {fileID: 0}
-  fireMessage: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  collectPoison: {fileID: 941692272}
+  fireMessage: {fileID: 1262031175}
 --- !u!65 &393266207
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22306,10 +22306,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   healthMessage: {fileID: 490813547}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  collectPoison: {fileID: 0}
-  fireMessage: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  collectPoison: {fileID: 941692272}
+  fireMessage: {fileID: 1262031175}
 --- !u!65 &395315884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26218,10 +26218,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   rockMessage: {fileID: 999677991}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
-  collectPoison: {fileID: 0}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
+  collectPoison: {fileID: 941692272}
   collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &557461068
@@ -28022,10 +28022,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   rockMessage: {fileID: 999677991}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
-  collectPoison: {fileID: 0}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
+  collectPoison: {fileID: 941692272}
   collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &630082100
@@ -33834,10 +33834,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   rockMessage: {fileID: 999677991}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
-  collectPoison: {fileID: 0}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
+  collectPoison: {fileID: 941692272}
   collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &849973505
@@ -40566,10 +40566,10 @@ MonoBehaviour:
   prompt: {fileID: 1063623851}
   poisonMessage: {fileID: 941692272}
   collectibles: {fileID: 798285794}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
   collections: {fileID: 2079133750}
 --- !u!65 &1118276962
 BoxCollider:
@@ -43736,10 +43736,10 @@ MonoBehaviour:
   prompt: {fileID: 1063623851}
   fireMessage: {fileID: 1262031175}
   collectibles: {fileID: 798285794}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectPoison: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectPoison: {fileID: 941692272}
   collections: {fileID: 2079133750}
 --- !u!65 &1230103846
 BoxCollider:
@@ -45212,10 +45212,10 @@ MonoBehaviour:
   prompt: {fileID: 1063623851}
   poisonMessage: {fileID: 941692272}
   collectibles: {fileID: 798285794}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
   collections: {fileID: 2079133750}
 --- !u!65 &1264880359
 BoxCollider:
@@ -51043,10 +51043,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   rockMessage: {fileID: 999677991}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
-  collectPoison: {fileID: 0}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
+  collectPoison: {fileID: 941692272}
   collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &1308598869
@@ -52375,10 +52375,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   healthMessage: {fileID: 490813547}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  collectPoison: {fileID: 0}
-  fireMessage: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  collectPoison: {fileID: 941692272}
+  fireMessage: {fileID: 1262031175}
 --- !u!65 &1366778536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52605,10 +52605,10 @@ MonoBehaviour:
   prompt: {fileID: 1063623851}
   fireMessage: {fileID: 1262031175}
   collectibles: {fileID: 798285794}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectPoison: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectPoison: {fileID: 941692272}
   collections: {fileID: 2079133750}
 --- !u!65 &1376692092
 BoxCollider:
@@ -52750,10 +52750,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   rockMessage: {fileID: 999677991}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
-  collectPoison: {fileID: 0}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
+  collectPoison: {fileID: 941692272}
   collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &1377570547
@@ -58620,10 +58620,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   healthMessage: {fileID: 490813547}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  collectPoison: {fileID: 0}
-  fireMessage: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  collectPoison: {fileID: 941692272}
+  fireMessage: {fileID: 1262031175}
 --- !u!65 &1617111920
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59407,10 +59407,10 @@ MonoBehaviour:
   prompt: {fileID: 1063623851}
   fireMessage: {fileID: 1262031175}
   collectibles: {fileID: 798285794}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectPoison: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectPoison: {fileID: 941692272}
   collections: {fileID: 2079133750}
 --- !u!65 &1651732873
 BoxCollider:
@@ -60653,10 +60653,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   healthMessage: {fileID: 490813547}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  collectPoison: {fileID: 0}
-  fireMessage: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  collectPoison: {fileID: 941692272}
+  fireMessage: {fileID: 1262031175}
 --- !u!65 &1697646367
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68750,10 +68750,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   rockMessage: {fileID: 999677991}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectFire: {fileID: 0}
-  collectPoison: {fileID: 0}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectFire: {fileID: 1262031175}
+  collectPoison: {fileID: 941692272}
   collectibles: {fileID: 798285794}
   collections: {fileID: 2079133750}
 --- !u!65 &1856099019
@@ -69256,10 +69256,10 @@ MonoBehaviour:
   prompt: {fileID: 1063623851}
   fireMessage: {fileID: 1262031175}
   collectibles: {fileID: 798285794}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  fullHealth: {fileID: 0}
-  collectPoison: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  fullHealth: {fileID: 490813547}
+  collectPoison: {fileID: 941692272}
   collections: {fileID: 2079133750}
 --- !u!65 &1871720019
 BoxCollider:
@@ -71017,10 +71017,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   healthMessage: {fileID: 490813547}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  collectPoison: {fileID: 0}
-  fireMessage: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  collectPoison: {fileID: 941692272}
+  fireMessage: {fileID: 1262031175}
 --- !u!65 &1921893978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72680,10 +72680,10 @@ MonoBehaviour:
   unit: {fileID: 1783564442721373}
   prompt: {fileID: 1063623851}
   healthMessage: {fileID: 490813547}
-  rockMessage: {fileID: 0}
-  Welcome: {fileID: 0}
-  collectPoison: {fileID: 0}
-  fireMessage: {fileID: 0}
+  rockMessage: {fileID: 999677991}
+  Welcome: {fileID: 613137100}
+  collectPoison: {fileID: 941692272}
+  fireMessage: {fileID: 1262031175}
 --- !u!65 &2002509149
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class BattleSystem : MonoBehaviour
     GameObject enemyGO;
     GameObject playerGO;
 
-    public GameObject attackBtn;
+    public GameObject melees;
 
     public Transform playerAttackSpot;
     public Transform enemeyAttackSpot;
@@ -121,7 +121,7 @@ public class BattleSystem : MonoBehaviour
         playerUnit = playerGO.GetComponent<Unit>();
         playerGO.GetComponent<PlayerController>().enabled = false;
 
-        attackBtn.SetActive(true);
+        melees.SetActive(true);
         if (playerUnit.unitLevel < 3)
         {
             smashAttackObj.SetActive(false);
@@ -432,7 +432,7 @@ public class BattleSystem : MonoBehaviour
 
                 Destroy(enemyGO);
 
-                attackBtn.SetActive(false);
+                melees.SetActive(false);
 
                 mainCam.enabled = true;
                 battleCam.enabled = false;
