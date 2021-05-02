@@ -11,9 +11,11 @@ public class Welcome : MonoBehaviour
     public int current = 0;
     public int size = 4;
     public bool newGame = true;
+    //public int onNext;
 
     public void next()
     {
+        //onNext = 1;
         GameObject message = messages[current];
         message.SetActive(false);
 

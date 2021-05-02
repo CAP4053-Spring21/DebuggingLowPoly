@@ -2,26 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour
 {
 
     public Interactable focus;
     public LayerMask movementMask;
+    //public GameObject next;
+    //private Welcome clickedOnNext;
 
     Camera cam;
     PlayerMotor motor;
+
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
         motor = GetComponent<PlayerMotor>();
+        //clickedOnNext = next.GetComponent<Welcome>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if (clickedOnNext == 1)
+        //{
+        //    clickedOnNext = 0;
+        //    return;
+
+        //}
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
