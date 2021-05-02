@@ -42,6 +42,12 @@ public class BattleSystem : MonoBehaviour
     Unit playerUnit;
     Unit enemyUnit;
 
+    public GameObject losePage;
+    public GameObject enemyHUDComp;
+    public GameObject playerHUDComp;
+    public GameObject dialoguePanel;
+    public GameObject battleInventory;
+
     // temporary feature
     // TODO: This is just a rip off of our expected game
     public int killCount = 0;
@@ -422,7 +428,12 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You were defeated.";
 
             yield return new WaitForSeconds(2.0f);
-            SceneManager.LoadScene(0);
+            
+            losePage.SetActive(true);
+            enemyHUDComp.SetActive(false);
+            playerHUDComp.SetActive(false);
+            dialoguePanel.SetActive(false);
+            battleInventory.SetActive(false);
         }
 
         // temporary if statement for the video assignment
