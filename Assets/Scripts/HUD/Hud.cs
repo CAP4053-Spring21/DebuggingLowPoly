@@ -13,6 +13,10 @@ public class Hud : MonoBehaviour
     public GameObject front;
     public GameObject optionsPage;
     public GameObject Inventory;
+    public GameObject Prompt;
+    public Text levelText;
+    public Unit unit;
+
     public bool gamePaused;
     public bool optionsOn;
 
@@ -56,9 +60,16 @@ public class Hud : MonoBehaviour
         optionsOn = !optionsOn;
     }
 
+    void LateUpdate()
+    {
+        Prompt.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
+        levelText.text = "Lvl " + unit.unitLevel;
+
         int scene_index = SceneManager.GetActiveScene().buildIndex;
         if (scene_index == 1)
         {

@@ -551,12 +551,11 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numRocks.ToString();
             stoneText.text = newcount;
             dialogueText.text = "You threw a rock!";
-            // StartCoroutine();
+            StartCoroutine(PlayerAttack(playerUnit.rockDamage, "Rock"));
         }
         else
         {
             dialogueText.text = "You ran out of rocks. Make another move.";
-
         }
     }
 
@@ -575,12 +574,11 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numFire.ToString();
             fireText.text = newcount;
             dialogueText.text = "You torched the enemy!";
-            // StartCoroutine();
+            StartCoroutine(PlayerAttack(playerUnit.fireDamage, "Fire"));
         }
         else
         {
             dialogueText.text = "You ran out of fire. Make another move.";
-
         }
     }
 
@@ -599,12 +597,11 @@ public class BattleSystem : MonoBehaviour
             string newcount = "x" + collections.numPoison.ToString();
             poisonText.text = newcount;
             dialogueText.text = "You poisoned the enemy!";
-            // StartCoroutine();
+            StartCoroutine(PlayerAttack(playerUnit.poisionDamage, "Poison"));
         }
         else
         {
             dialogueText.text = "You ran out of poison. Make another move.";
-
         }
     }
 }
