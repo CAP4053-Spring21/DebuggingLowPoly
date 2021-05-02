@@ -60,11 +60,6 @@ public class Hud : MonoBehaviour
         optionsOn = !optionsOn;
     }
 
-    void LateUpdate()
-    {
-        Prompt.SetActive(false);
-    }
-
     // Update is called once per frame
     void Update()
     {

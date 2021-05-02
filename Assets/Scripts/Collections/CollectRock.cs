@@ -14,6 +14,7 @@ public class CollectRock : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Rock");
         collectSound.Play();
         Destroy(gameObject);
         
