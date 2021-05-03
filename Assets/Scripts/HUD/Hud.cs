@@ -41,6 +41,8 @@ public class Hud : MonoBehaviour
     public void togglePause(bool gamePaused)
     {
         healthBar.SetActive(!gamePaused);
+        Inventory.SetActive(!gamePaused);
+        
         pauseMenu.SetActive(gamePaused);
         front.SetActive(gamePaused);
 
